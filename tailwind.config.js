@@ -1,8 +1,12 @@
 module.exports = {
   mode: "jit",
-  content: ["web/**/*.{ejs,js}"],
+  content: ["./views/**/*.ejs"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        inter: "'Inter', sans-serif"
+      }
+    },
   },
   plugins: [],
 }

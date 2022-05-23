@@ -6,13 +6,14 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon index.js",
-    "tailwind:css": "postcss web/src/style.css -o web/public/css/style.css"
+    "tailwind:css": "postcss ./src/style.css -o ./public/css/style.css --watch"
   },
   "keywords": [],
   "author": "alit darma putra",
   "license": "MIT",
   "dependencies": {
     "autoprefixer": "^10.4.7",
+    "body-parser": "^1.20.0",
     "db-migrate-mysql": "^2.2.0",
     "dotenv": "^16.0.1",
     "ejs": "^3.1.8",
