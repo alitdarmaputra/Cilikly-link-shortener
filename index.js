@@ -33,7 +33,7 @@ const connection = mysql.createConnection(db_config)
 app.get("/", homePageController);
 app.get("/auth/login", loginController);
 app.get("/auth/signup", signupController);
-app.get("/users/signup", storeUserController);
+app.post("/users/signup", storeUserController);
 
 app.listen(process.env.PORT, () => {
     console.log(`[${new Date().toLocaleString()}]: Cilikly server listen on port ${process.env.PORT}`);
