@@ -14,5 +14,5 @@ module.exports = async (req, res) => {
         VALUES ("${email}", "${username}", "${password}")`
     );
 
-    res.redirect("/");
+    res.redirect("/auth/login");
 }
