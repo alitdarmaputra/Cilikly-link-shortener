@@ -10,7 +10,8 @@
             <div class="mt-3 w-full text-center login-page__login-form">
                 <h2 class="text-4xl mb-2">Hello Friend</h2>
                 <p class="px-28 text-slate-800">Create an account to and start using cilikly</p>
-                <form class="mt-5 px-36 text-left" action="/users/signup" method="POST">
+
+                <form class="mt-5 px-36 text-left signup-form" action="/users/signup" method="POST">
                     <label class="block mb-2" for="email">Email address</label>
                     <input class="mb-1 w-full block rounded-lg bg-slate-100 px-3 py-2" id="email" type="email" name="email">
                     
@@ -20,8 +21,9 @@
                     <label class="block mb-2" for="password">Password</label>
                     <input class="w-full block rounded-lg bg-slate-100 px-3 py-2" id="password" type="password" name="password">
 
-                    <button class="mt-5 px-7 py-3 bg-sky-600 rounded-md hover:bg-sky-800 text-white" type="submit">Sign up</button>
+                    <button class="mt-5 px-7 py-3 bg-sky-600 rounded-md hover:bg-sky-800 text-white signup-btn" type="submit">Sign up</button>
                 </form>
+
                 <p class="mt-5 text-left px-36 text-slate-600">Already have an account? <a class="font-bold text-sky-600 hover:text-slate-700" href="/auth/login">Login</a></p>
             </div>
         </div>

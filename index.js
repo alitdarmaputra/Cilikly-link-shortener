@@ -2,7 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const path = require("path");
 const ejs = require("ejs");
-const mysql = require("mysql2");
+const mysql = require("mysql2/promise");
 const { env } = require("process");
 const bodyParser = require("body-parser");
 
@@ -14,8 +14,7 @@ const loginController = require("./controller/loginController.js");
 const signupController = require("./controller/signupController.js");
 const storeUserController = require("./controller/storeUserController.js");
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static("public"));
 app.set("view engine", "ejs");
 
@@ -28,6 +27,7 @@ const db_config = {
 }
 
 const connection = mysql.createConnection(db_config)
+console.log(`[${new Date().toLocaleString()}]: Success conected to mysql database`);
 
 // Route
 app.get("/", homePageController);
