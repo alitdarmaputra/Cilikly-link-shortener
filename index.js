@@ -3,9 +3,8 @@ const express = require("express");
 const path = require("path");
 const ejs = require("ejs");
 const mysql = require("mysql2/promise");
-const { env } = require("process");
 const bodyParser = require("body-parser");
-
+const session = require("express-session");
 const app = express();
 
 // Controllers
@@ -13,6 +12,8 @@ const homePageController = require("./controller/homepageController.js");
 const loginController = require("./controller/loginController.js");
 const signupController = require("./controller/signupController.js");
 const storeUserController = require("./controller/storeUserController.js");
+const loginUserController = require("./controller/loginUserController");
+const { Session } = require("inspector");
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static("public"));
@@ -34,6 +35,7 @@ app.get("/", homePageController);
 app.get("/auth/login", loginController);
 app.get("/auth/signup", signupController);
 app.post("/users/signup", storeUserController);
+app.post("/users/login", loginUserController);
 
 app.listen(process.env.PORT, () => {
     console.log(`[${new Date().toLocaleString()}]: Cilikly server listen on port ${process.env.PORT}`);
