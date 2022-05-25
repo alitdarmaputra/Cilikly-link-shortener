@@ -13,8 +13,8 @@ const homePageController = require("./controller/homepageController.js");
 const loginController = require("./controller/loginController.js");
 const signupController = require("./controller/signupController.js");
 const storeUserController = require("./controller/storeUserController.js");
-const loginUserController = require("./controller/loginUserController");
-
+const loginUserController = require("./controller/loginUserController.js");
+const dashboardController = require("./controller/dashboardController.js");
 // Middleware
 const auth = require("./middleware/authMiddleware");
 
@@ -49,7 +49,7 @@ app.get("/auth/login", loginController);
 app.get("/auth/signup", signupController);
 app.post("/users/signup", storeUserController);
 app.post("/users/login", loginUserController);
-
+app.get("/users/dashboard", dashboardController);
 app.listen(process.env.PORT, () => {
     console.log(`[${new Date().toLocaleString()}]: Cilikly server listen on port ${process.env.PORT}`);
 });
