@@ -5,6 +5,7 @@ const ejs = require("ejs");
 const mysql = require("mysql2/promise");
 const bodyParser = require("body-parser");
 const session = require("express-session");
+const MySQLStore = require('express-mysql-session')(session);
 const app = express();
 
 // Controllers
@@ -13,22 +14,34 @@ const loginController = require("./controller/loginController.js");
 const signupController = require("./controller/signupController.js");
 const storeUserController = require("./controller/storeUserController.js");
 const loginUserController = require("./controller/loginUserController");
-const { Session } = require("inspector");
+
+// Middleware
+const auth = require("./middleware/authMiddleware");
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static("public"));
 app.set("view engine", "ejs");
 
-// Database connect
+// Configuration to connect with mysql database
 const db_config = {
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
     password: process.env.DB_PASS,
-    database: "cilikly_db"
+    database: "cilikly_db",
+    port: process.env.DB_PORT
 }
 
-const connection = mysql.createConnection(db_config)
+// Database connect
+const connection = mysql.createPool(db_config)
 console.log(`[${new Date().toLocaleString()}]: Success conected to mysql database`);
+
+// Session connect to database
+app.use(session({
+    secret: "nyanmo cat",
+    resave: false,
+    saveUninitialized: true,
+    store: new MySQLStore({},connection)
+}));
 
 // Route
 app.get("/", homePageController);

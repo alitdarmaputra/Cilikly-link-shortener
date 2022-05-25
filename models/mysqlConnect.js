@@ -4,7 +4,8 @@ const db_config = {
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
     password: process.env.DB_PASS,
-    database: "cilikly_db"
+    database: "cilikly_db",
+    port: process.env.DB_PORT
 }
 
 async function query(sql, params) {
