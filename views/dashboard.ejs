@@ -2,7 +2,86 @@
 <html lang="en">
 <%-include("layouts/header");-%>
 <body>
-    <%-include("layouts/dashboard_navbar");-%>
-    
+    <main class="flex flex-col h-screen overflow-hidden border-2 flex-1">
+        <%-include("layouts/dashboard_navbar");-%>
+        <div class="pl-11 pt-10 header-container">
+            <h1 class="font-bold text-3xl">Links</h1>
+        </div>
+
+        <div class="overflow-y-auto flex-1 mt-16 grid grid-cols-3 gap-2 links-container border-t-2">
+            <div class="overflow-y-auto link-list bg-slate-100">
+                <div class="flex total-link font-bold text-lg w-full pl-11"><p class="inline-block align-middle py-4">10 Results</p></div>
+                <div class="link-item px-11 py-3 bg-slate-200">
+                    <h4 class="link-date text-sm text-slate-600">12 April 2022</h4>
+                    <h3 class="link-title text-lg">Technical Meet</h3>
+                    <p class="font-bold link-content text-sky-700">cilikly.heroku.com/meet</p>
+                </div>
+                <div class="link-item px-11 py-3 bg-slate-200">
+                    <h4 class="link-date text-sm text-slate-600">12 April 2022</h4>
+                    <h3 class="link-title text-lg">Technical Meet</h3>
+                    <p class="font-bold link-content text-sky-700">cilikly.heroku.com/meet</p>
+                </div>
+                <div class="link-item px-11 py-3 bg-slate-200">
+                    <h4 class="link-date text-sm text-slate-600">12 April 2022</h4>
+                    <h3 class="link-title text-lg">Technical Meet</h3>
+                    <p class="font-bold link-content text-sky-700">cilikly.heroku.com/meet</p>
+                </div>
+                <div class="link-item px-11 py-3 bg-slate-200">
+                    <h4 class="link-date text-sm text-slate-600">12 April 2022</h4>
+                    <h3 class="link-title text-lg">Technical Meet</h3>
+                    <p class="font-bold link-content text-sky-700">cilikly.heroku.com/meet</p>
+                </div>
+                <div class="link-item px-11 py-3 bg-slate-200">
+                    <h4 class="link-date text-sm text-slate-600">12 April 2022</h4>
+                    <h3 class="link-title text-lg">Technical Meet</h3>
+                    <p class="font-bold link-content text-sky-700">cilikly.heroku.com/meet</p>
+                </div>
+
+            </div>
+            
+            <div class="overflow-y-auto link-detail col-span-2 pt-9 px-12">
+                <div class="flex w-full header-container justify-between items-center">
+                    <h2 class="text-slate-800 font-bold text-3xl link-detail__title mb-5">Technical Meet</h2>
+                    <div class="px-4 py-2 bg-slate-200 rounded-lg edit-button">
+                        <i class=" fa-regular fa-pen-to-square"></i>
+                        Edit
+                    </div>
+                </div>
+                <p class="link-detail__date mb-5">12 April 2022 by Alit Darma Putra</p>
+
+                <div class="flex justify-between items-center px-5 border-2 link-detail__link-wrapper h-14 rounded-lg">
+                    <div class="gap-5 flex items-center h-full">
+                        <i class="text-slate-300 text-xl fa-solid fa-link"></i>
+                        <a href="www.google.com" class="text-xl">cilikly.heroku.com/meet</a>
+                    </div>
+                    
+
+                    <div class="flex gap-5 link-wrapper__right">
+                        <div class="flex copy-btn gap-2">
+                            <i class="text-slate-300 h-full text-xl fa-regular fa-copy"></i>
+                            <p>Copy</p>
+                        </div>
+                        <div class="flex qr-btn gap-2">
+                            <i class="text-slate-300 h-full text-xl fa-solid fa-qrcode"></i>
+                            <p>QR Code</p>    
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex link-detail__redirect-wrapper mt-5 gap-3 items-center">
+                    <i class="fa-regular fa-paper-plane"></i>
+                    <div class="destination-detail">
+                        <h3 class="font-bold">Destination</h3>
+                        <a href="">www.google.com</a>
+                    </div>
+                </div>
+
+                <div class="mt-14 total-click-container">
+                    <h3 class="font-bold text-3xl">100</h3>
+                    <p>Total Clicks</p>
+                </div>
+            </div>
+        </div>
+    </main>
 </body>
 </html>
