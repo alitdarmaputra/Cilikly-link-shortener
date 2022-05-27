@@ -9,6 +9,7 @@ module.exports = async (req, res) => {
 
         if(rows.length != 0) {
             const isMatch = await bcrypt.compare(password, rows[0].password);
+
             if(isMatch) {
                 req.session.userId = rows[0].UserId;
                 res.redirect("/users/dashboard");

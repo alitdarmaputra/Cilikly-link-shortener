@@ -9,7 +9,7 @@ module.exports = async (req, res) => {
         WHERE email = "${email}" OR 
         username = "${username}";`);
 
-    if(userExist) {
+    if(userExist.length != 0) {
         res.redirect("/auth/signup");
     } else {
         password = await bcrypt.hash(password, 12);

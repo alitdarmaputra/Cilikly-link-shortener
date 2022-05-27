@@ -33,7 +33,6 @@ const db_config = {
 
 // Database connect
 const connection = mysql.createPool(db_config)
-console.log(`[${new Date().toLocaleString()}]: Success conected to mysql database`);
 
 // Session connect to database
 app.use(session({
