@@ -4,6 +4,8 @@ const createLinkBtn = document.querySelector(".create-link-button");
 const createLinkModal = document.querySelector(".create-link-modal-container");
 const closeLinkModal = document.querySelector(".create-link-modal-close");
 const overlay = document.querySelector(".overlay");
+const submitLinkBtn = document.querySelector(".submit-link-button");
+const longUrlForm = document.querySelector(".long-url-form");
 
 function showOverlay() {
     overlay.classList.toggle("hidden");
@@ -42,4 +44,15 @@ closeLinkModal.addEventListener("click", () => {
 overlay.addEventListener("click", e => {
     showCreateLinkModal();
     showOverlay();
+});
+
+// Submit Link
+submitLinkBtn.addEventListener("click", e => {
+    e.preventDefault;
+    if(longUrlForm.value) {
+        const response = fetch("/users/createLink", POST, {
+            data
+        })  
+    } 
 })
+

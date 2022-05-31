@@ -12,7 +12,7 @@
 
     <!-- Create link modal -->
     <div class="z-50 w-72 transition-all ease-out absolute duration-1000 -mr-72 right-0 h-screen bottom-0 top-0 bg-white shadow-2xl create-link-modal-container">
-        <form action="">
+        <form>
             <div class="flex px-5 py-4 h-screen flex-col justify-between create-link-modal-wrapper">
                 <div class="flex flex-col justify-around create-link__form-container">
                     <div class="flex justify-between items-center create-link-header">
@@ -24,12 +24,12 @@
                         <input class="border-2 w-full h-18 p-2 rounded-sm mt-8 mb-5" type="text" value="cilikly.herokuapp.com" readonly>
                         <div class="min-h-32 h-auto long-url-input border-2 rounded-md p-2">
                             <h3 class="bold font-bold">Enter Long URL</h3>
-                            <textarea class="overflow-visible mt-3 w-full focus:outline-none resize-none" name="" id="" cols="30" rows="3"></textarea>
+                            <textarea class="overflow-visible mt-3 w-full focus:outline-none resize-none long-url-form" name="" id="" cols="30" rows="3"></textarea>
                         </div>
                     </div>    
                 </div>
     
-                <button class="py-2 w-full rounded-md text-center bg-sky-400 font-semibold text-white hover:bg-sky-600" type="submit">CREATE</button>
+                <button class="submit-link-button py-2 w-full rounded-md text-center bg-sky-400 font-semibold text-white hover:bg-sky-600" type="submit">CREATE</button>
             </div>
         </form>
     </div>
@@ -71,7 +71,6 @@
                     <h3 class="link-title text-lg">Technical Meet</h3>
                     <p class="font-bold link-content text-sky-700">cilikly.heroku.com/meet</p>
                 </div>
-
             </div>
             
             <div class="overflow-y-auto link-detail col-span-2 pt-9 px-12">
@@ -87,10 +86,9 @@
                 <div class="flex justify-between items-center px-5 border-2 link-detail__link-wrapper h-14 rounded-lg">
                     <div class="gap-5 flex items-center h-full">
                         <i class="text-slate-300 text-xl fa-solid fa-link"></i>
-                        <a href="www.google.com" class="text-xl">cilikly.heroku.com/meet</a>
+                        <a class="text-xl">cilikly.heroku.com/meet</a>
                     </div>
                     
-
                     <div class="flex gap-5 link-wrapper__right">
                         <div class="flex copy-btn gap-2">
                             <i class="text-slate-300 h-full text-xl fa-regular fa-copy"></i>

@@ -13,7 +13,7 @@ module.exports = async (req, res) => {
         res.redirect("/auth/signup");
     } else {
         password = await bcrypt.hash(password, 12);
-        const newUser = await connection.query(`
+        await connection.query(`
             INSERT INTO Users (email, username, password) 
             VALUES ("${email}", "${username}", "${password}")`
         );
