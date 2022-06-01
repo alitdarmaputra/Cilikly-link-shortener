@@ -50,7 +50,7 @@ app.get("/auth/signup", signupController);
 app.post("/users/signup", storeUserController);
 app.post("/users/login", loginUserController);
 app.get("/users/dashboard", dashboardController);
-app.get("/users/createLink", storeLinkController);
+app.post("/users/createLink", storeLinkController);
 app.listen(process.env.PORT, () => {
     console.log(`[${new Date().toLocaleString()}]: Cilikly server listen on port ${process.env.PORT}`);
 });

@@ -5,7 +5,6 @@ const createLinkModal = document.querySelector(".create-link-modal-container");
 const closeLinkModal = document.querySelector(".create-link-modal-close");
 const overlay = document.querySelector(".overlay");
 const submitLinkBtn = document.querySelector(".submit-link-button");
-const longUrlForm = document.querySelector(".long-url-form");
 
 function showOverlay() {
     overlay.classList.toggle("hidden");
@@ -47,12 +46,29 @@ overlay.addEventListener("click", e => {
 });
 
 // Submit Link
-submitLinkBtn.addEventListener("click", e => {
-    e.preventDefault;
-    if(longUrlForm.value) {
-        const response = fetch("/users/createLink", POST, {
-            data
-        })  
+submitLinkBtn.addEventListener("click", e => { 
+	const form = {
+		domain: "cilikly.herokuapp.com",
+		backHalf: document.getElementById("back-half").value,
+		longUrl: document.querySelector(".long-url-form").value
+	}
+
+	var formBody = [];
+	for (var property in form) {
+		var encodedKey = encodeURIComponent(property);
+		var encodedValue = encodeURIComponent(form[property]);
+		formBody.push(encodedKey + "=" + encodedValue);
+	}
+	formBody = formBody.join("&");
+
+    if(form.longUrl && form.backHalf) {
+        const response = fetch("/users/createLink", {
+			method: "POST",
+			headers: {
+				'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+			},
+			body: formBody
+        });  
     } 
 })
 

@@ -17,6 +17,6 @@ module.exports = async (req, res) => {
             INSERT INTO Users (email, username, password) 
             VALUES ("${email}", "${username}", "${password}")`
         );
-        res.redirect("/auth/login");
+		res.redirect("/auth/login");
     }
 }
