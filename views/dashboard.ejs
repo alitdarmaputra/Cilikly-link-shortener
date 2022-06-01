@@ -22,6 +22,9 @@
 
                     <div class="create-link__input-container">
                         <input class="border-2 w-full h-18 p-2 rounded-sm mt-8 mb-5" type="text" value="cilikly.herokuapp.com" readonly>
+						<label for="link-title-form font-bold">Enter Link Title</label>
+						<input class="border-2 w-full h-18 p-2 rounded-sm mt-5 mb-5" id="link-title-form"></input>
+
 						<label for="back-half font-bold">Enter Back Half</label>
 						<input class="border-2 w-full h-18 p-2 rounded-sm mt-5 mb-5" id="back-half"></input>
                         <div class="min-h-32 h-auto long-url-input border-2 rounded-md p-2">
@@ -31,7 +34,7 @@
                     </div>    
                 </div>
     
-                <div class="submit-link-button py-2 w-full rounded-md text-center bg-sky-400 font-semibold text-white hover:bg-sky-600 hover:pointer">CREATE</div>
+                <div class="submit-link-button py-2 w-full rounded-md text-center bg-sky-400 font-semibold text-white hover:bg-sky-600 hover:cursor-pointer">CREATE</div>
             </div>
         </form>
     </div>
@@ -47,33 +50,9 @@
 
         <div class="overflow-y-auto flex-1 mt-16 grid grid-cols-3 gap-2 links-container border-t-2">
             <div class="overflow-y-auto link-list bg-slate-100">
-                <div class="flex total-link font-bold text-lg w-full pl-11"><p class="inline-block align-middle py-4">10 Results</p></div>
-                <div class="link-item px-11 py-3 bg-slate-200">
-                    <h4 class="link-date text-sm text-slate-600">12 April 2022</h4>
-                    <h3 class="link-title text-lg">Technical Meet</h3>
-                    <p class="font-bold link-content text-sky-700">cilikly.heroku.com/meet</p>
-                </div>
-                <div class="link-item px-11 py-3 bg-slate-200">
-                    <h4 class="link-date text-sm text-slate-600">12 April 2022</h4>
-                    <h3 class="link-title text-lg">Technical Meet</h3>
-                    <p class="font-bold link-content text-sky-700">cilikly.heroku.com/meet</p>
-                </div>
-                <div class="link-item px-11 py-3 bg-slate-200">
-                    <h4 class="link-date text-sm text-slate-600">12 April 2022</h4>
-                    <h3 class="link-title text-lg">Technical Meet</h3>
-                    <p class="font-bold link-content text-sky-700">cilikly.heroku.com/meet</p>
-                </div>
-                <div class="link-item px-11 py-3 bg-slate-200">
-                    <h4 class="link-date text-sm text-slate-600">12 April 2022</h4>
-                    <h3 class="link-title text-lg">Technical Meet</h3>
-                    <p class="font-bold link-content text-sky-700">cilikly.heroku.com/meet</p>
-                </div>
-                <div class="link-item px-11 py-3 bg-slate-200">
-                    <h4 class="link-date text-sm text-slate-600">12 April 2022</h4>
-                    <h3 class="link-title text-lg">Technical Meet</h3>
-                    <p class="font-bold link-content text-sky-700">cilikly.heroku.com/meet</p>
-                </div>
-            </div>
+				<!-- link list will render here -->
+
+			</div>
             
             <div class="overflow-y-auto link-detail col-span-2 pt-9 px-12">
                 <div class="flex w-full header-container justify-between items-center">
