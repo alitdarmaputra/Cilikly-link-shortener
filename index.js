@@ -17,6 +17,7 @@ const loginUserController = require("./controller/loginUserController.js");
 const dashboardController = require("./controller/dashboardController.js");
 const storeLinkController = require("./controller/storeLinkController.js");
 const listLinkController = require("./controller/listLinksController");
+const getLinkDetailController = require("./controller/getLinkDetailController");
 
 // Middleware
 const auth = require("./middleware/authMiddleware");
@@ -53,7 +54,8 @@ app.post("/users/signup", storeUserController);
 app.post("/users/login", loginUserController);
 app.get("/users/dashboard", dashboardController);
 app.post("/users/createLink", storeLinkController);
-app.get("/users/list", listLinkController);
+app.get("/users/links", listLinkController);
+app.get("/users/links/:LinkId", getLinkDetailController);
 
 app.listen(process.env.PORT, () => {
     console.log(`[${new Date().toLocaleString()}]: Cilikly server listen on port ${process.env.PORT}`);
