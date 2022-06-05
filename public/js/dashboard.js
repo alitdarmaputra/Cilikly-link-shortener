@@ -6,6 +6,8 @@ const closeLinkModal = document.querySelector(".create-link-modal-close");
 const overlay = document.querySelector(".overlay");
 const submitLinkBtn = document.querySelector(".submit-link-button");
 
+let activeLink = 0;
+
 function showOverlay() {
     overlay.classList.toggle("hidden");
     overlay.classList.toggle("opacity-0");
@@ -142,9 +144,10 @@ function makeLinkDetailCard(data) {
 						<i class="text-slate-300 h-full text-xl fa-regular fa-copy"></i>
 						<p>Copy</p>
 					</div>
-				<div class="flex qr-btn gap-2">
-					<i class="text-slate-300 h-full text-xl fa-solid fa-qrcode"></i>
-					<p>QR Code</p>    
+					<div class="flex qr-btn gap-2">
+						<i class="text-slate-300 h-full text-xl fa-solid fa-qrcode"></i>
+						<p>QR Code</p>
+					</div>
 				</div>
 			</div>
 
@@ -160,6 +163,7 @@ function makeLinkDetailCard(data) {
 				<h3 class="font-bold text-3xl">${data.Click_count}</h3>
 				<p>Total Clicks</p>
 			</div>
+
 	`
 }
 
@@ -168,23 +172,26 @@ function generateLinkDetail() {
 	
 	linksItem.forEach(function (link) {
 		link.addEventListener("click", async function() {
-			linksItem.forEach(link => {
-				link.classList.add("bg-slate-200");
-				link.classList.remove("bg-white");
-			});
+			if(link.dataset.linkid != activeLink) {
+				linksItem.forEach(link => {
+					link.classList.add("bg-slate-200");
+					link.classList.remove("bg-white");
+				});
 				
 
-			let linkDetail = await fetchLinkData(`/users/links/${link.dataset.linkid}`);
+				let linkDetail = await fetchLinkData(`/users/links/${link.dataset.linkid}`);
 			
 
-			if(!linkDetail.error) {
-				linkDetail = linkDetail.linkDetail;
-				const content = makeLinkDetailCard(linkDetail[0]);
-				renderContent(".link-detail", content);
-				link.classList.add("bg-white");
-				link.classList.remove("bg-slate-200");
-			} else {
-				throw new Error(linkDetail.error);
+				if(!linkDetail.error) {
+					linkDetail = linkDetail.linkDetail;
+					const content = makeLinkDetailCard(linkDetail[0]);
+					renderContent(".link-detail", content);
+					link.classList.add("bg-white");
+					link.classList.remove("bg-slate-200");
+					activeLink= link.dataset.linkid;
+				} else {
+					throw new Error(linkDetail.error);
+				}
 			}
 		})
 	})	
