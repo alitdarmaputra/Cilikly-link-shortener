@@ -155,7 +155,7 @@ function makeLinkDetailCard(data) {
 		  		<i class="fa-regular fa-paper-plane"></i>
 	  			<div class="destination-detail">
 					<h3 class="font-bold">Destination</h3>
-					<a href="">${data.Long_url}</a>
+					<a href="${data.Long_url}">${data.Long_url}</a>
 				</div>
 			</div>
 
@@ -167,7 +167,7 @@ function makeLinkDetailCard(data) {
 	`
 }
 
-function generateLinkDetail() {
+async function generateLinkDetail() {
 	const linksItem = document.querySelectorAll(".link-item");
 	
 	linksItem.forEach(function (link) {
@@ -194,9 +194,19 @@ function generateLinkDetail() {
 				}
 			}
 		})
-	})	
-}
+	})
 
+	try {
+		let firstDetail = await fetchLinkData(`/users/links/${linksItem[0].dataset.linkid}`);
+		firstDetail = firstDetail.linkDetail[0];
+		const firstDetailCard = makeLinkDetailCard(firstDetail)
+		renderContent(".link-detail", firstDetailCard);
+		linksItem[0].classList.add("bg-white");
+		linksItem[0].classList.remove("bg-slate-200");
+	} catch(e) {
+		console.log(e);
+	}
+}
 
  
 
