@@ -7,7 +7,9 @@
     <div class="hidden right-14 rounded-md shadow-xl absolute px-4 py-3 flex-col z-10 bg-white transition-all duration-1000 ease-out account-modal-container">
         <a class="px-3 py-3 hover:bg-slate-200 rounded" href="">Account Settings</a>
         <hr class="mt-2 mb-2">
-        <a class="w-full px-3 py-3 hover:bg-slate-200 rounded" href="">Log Out</a>
+        <form action="/users/logout" class="w-full">
+            <button type="submit" class="w-full text-left cursor-pointer px-3 py-3 hover:bg-slate-200 rounded logout-btn">Log Out</button>
+        </form>
     </div>
 
     <!-- Create link modal -->

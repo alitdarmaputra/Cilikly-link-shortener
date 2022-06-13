@@ -19,6 +19,7 @@ const storeLinkController = require("./controller/storeLinkController.js");
 const listLinkController = require("./controller/listLinksController");
 const getLinkDetailController = require("./controller/getLinkDetailController");
 const redirectLinkController = require("./controller/redirectLinkController.js");
+const logoutController = require("./controller/logoutController.js");
 // Middleware
 const auth = require("./middleware/authMiddleware");
 
@@ -52,10 +53,11 @@ app.get("/auth/login", loginController);
 app.get("/auth/signup", signupController);
 app.post("/users/signup", storeUserController);
 app.post("/users/login", loginUserController);
-app.get("/users/dashboard", dashboardController);
-app.post("/users/createLink", storeLinkController, listLinkController);
-app.get("/users/links", listLinkController);
-app.get("/users/links/:LinkId", getLinkDetailController);
+app.get("/users/dashboard", auth, dashboardController);
+app.post("/users/createLink", auth, storeLinkController, listLinkController);
+app.get("/users/links", auth, listLinkController);
+app.get("/users/links/:LinkId", auth, getLinkDetailController);
+app.get("/users/logout", logoutController);
 app.get("/:backhalf", redirectLinkController);
 app.use((req, res) => res.render("notfound"));
 

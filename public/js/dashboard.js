@@ -219,6 +219,3 @@ async function generateLinkDetail() {
 		}, 1000);
 	}); 
 }
-
-
-
