@@ -18,7 +18,7 @@ const dashboardController = require("./controller/dashboardController.js");
 const storeLinkController = require("./controller/storeLinkController.js");
 const listLinkController = require("./controller/listLinksController");
 const getLinkDetailController = require("./controller/getLinkDetailController");
-
+const redirectLinkController = require("./controller/redirectLinkController.js");
 // Middleware
 const auth = require("./middleware/authMiddleware");
 
@@ -56,7 +56,7 @@ app.get("/users/dashboard", dashboardController);
 app.post("/users/createLink", storeLinkController, listLinkController);
 app.get("/users/links", listLinkController);
 app.get("/users/links/:LinkId", getLinkDetailController);
-
+app.get("/:backhalf", redirectLinkController);
 app.listen(process.env.PORT, () => {
     console.log(`[${new Date().toLocaleString()}]: Cilikly server listen on port ${process.env.PORT}`);
 });
