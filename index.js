@@ -53,7 +53,7 @@ app.get("/auth/signup", signupController);
 app.post("/users/signup", storeUserController);
 app.post("/users/login", loginUserController);
 app.get("/users/dashboard", dashboardController);
-app.post("/users/createLink", storeLinkController);
+app.post("/users/createLink", storeLinkController, listLinkController);
 app.get("/users/links", listLinkController);
 app.get("/users/links/:LinkId", getLinkDetailController);
 

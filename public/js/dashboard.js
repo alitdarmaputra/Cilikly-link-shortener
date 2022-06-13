@@ -69,9 +69,12 @@ function makeSideLink(data) {
 	`
 }
 
-async function generateSideBar() {	
+async function generateSideBar(result) {	
 	renderContent(".link-list", "");
-	const result = await fetchLinkData("/users/links");
+
+	if(!result)
+		result = await fetchLinkData("/users/links");
+	
 	if(!result.error) {
 		let sideBar = `<div class="flex total-link font-bold text-lg w-full pl-11"><p class="inline-block align-middle py-4">${result.data.length} Results</p></div>`	
 		result.data.forEach(e => {
@@ -89,7 +92,7 @@ generateSideBar();
 
 
 // Submit Link
-submitLinkBtn.addEventListener("click", e => { 
+submitLinkBtn.addEventListener("click", async e => { 
 	e.preventDefault();
 	const form = {
 		title: document.getElementById("link-title-form").value,
@@ -107,17 +110,18 @@ submitLinkBtn.addEventListener("click", e => {
 	formBody = formBody.join("&");
 
     if(form.longUrl && form.backHalf && form.title) {
-        const response = fetch("/users/createLink", {
+        const result = await fetch("/users/createLink", {
 			method: "POST",
 			headers: {
 				'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
 			},
 			body: formBody
-        });  
+        }).then(response => response.json());
+		console.log(result);
+		generateSideBar(result);  
     }
 	showOverlay();
 	showCreateLinkModal();
-	generateSideBar();	
 });
 
 //Generate Link Detail
@@ -136,7 +140,7 @@ function makeLinkDetailCard(data) {
 			<div class="flex justify-between items-center px-5 border-2 link-detail__link-wrapper h-14 rounded-lg">
 				<div class="gap-5 flex items-center h-full">
 					<i class="text-slate-300 text-xl fa-solid fa-link"></i>
-					<a href="${data.Domain}/${data.Backhalf}" class="text-xl">${data.Domain}/${data.Backhalf}</a>
+					<a href="http://${data.Domain}/${data.Backhalf}" class="text-xl">${data.Domain}/${data.Backhalf}</a>
 				</div>
                     
 				<div class="flex gap-5 link-wrapper__right">

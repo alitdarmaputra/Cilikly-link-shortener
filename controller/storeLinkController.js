@@ -1,7 +1,6 @@
 const connection = require("../models/mysqlConnect");
 
-module.exports = async (req, res) => {
-	console.log(req.body);
+module.exports = async (req, res, next) => {
     let {longUrl, domain, title, backHalf} = req.body;
     let UserId = req.session.userId;
     try {
@@ -10,12 +9,8 @@ module.exports = async (req, res) => {
              (UserId, Long_url, Title, Backhalf, Domain)
              VALUES (${UserId}, "${longUrl}", "${title}", "${backHalf}", "cilikly.herokuapp.com")`
         )
-		res.json({
-			error: null,
-			status: "success"
-		});
+		next();
     } catch(e) {
         console.log(e);
     }
-
 }
