@@ -57,6 +57,8 @@ app.post("/users/createLink", storeLinkController, listLinkController);
 app.get("/users/links", listLinkController);
 app.get("/users/links/:LinkId", getLinkDetailController);
 app.get("/:backhalf", redirectLinkController);
+app.use((req, res) => res.render("notfound"));
+
 app.listen(process.env.PORT, () => {
     console.log(`[${new Date().toLocaleString()}]: Cilikly server listen on port ${process.env.PORT}`);
 });

@@ -6,5 +6,7 @@ module.exports = async (req, res) => {
     if(link.length != 0) {
         link = link[0];
         res.redirect(link.Long_url);
+    } else {
+        res.render("notfound");
     }
 }
