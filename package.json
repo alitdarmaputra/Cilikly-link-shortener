@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon index.js",
-    "tailwind:css": "postcss ./src/style.css -o ./public/css/style.css --watch"
+    "tailwind:css": "postcss ./src/style.css -o ./public/css/style.css --minify"
   },
   "keywords": [],
   "author": "alit darma putra",
