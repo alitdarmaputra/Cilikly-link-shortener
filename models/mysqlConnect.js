@@ -1,4 +1,4 @@
-const mysql = require("mysql2");
+const mysql = require("mysql2/promise");
 
 const db_config = {
     host: process.env.DB_HOST,
@@ -6,16 +6,12 @@ const db_config = {
     password: process.env.DB_PASS,
     database: "cilikly_db",
     port: process.env.DB_PORT,
-    waitForConnections: true,
-    connectionLimit: 10,
-    queueLimit: 0
 }
 
 async function query(sql) {
     try{
-        const pool = mysql.createPool(db_config);
-        const promisePool = pool.promise(); 
-        const [results, ] = await promisePool.query(sql);
+        const connection = await mysql.createConnection(db_config); 
+        const [results, ] = await connection.execute(sql);
         return results;
     } catch (e) {
         console.log(e);
