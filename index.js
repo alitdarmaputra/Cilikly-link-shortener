@@ -59,6 +59,11 @@ app.get("/users/links/:LinkId", getLinkDetailController);
 app.get("/:backhalf", redirectLinkController);
 app.use((req, res) => res.render("notfound"));
 
-app.listen(process.env.PORT, () => {
-    console.log(`[${new Date().toLocaleString()}]: Cilikly server listen on port ${process.env.PORT}`);
+let port = process.env.PORT;
+if(port == null || port == "") {
+    port = 4000;
+}
+
+app.listen(port, () => {
+    console.log(`[${new Date().toLocaleString()}]: Cilikly server listen on port ${port}`);
 });
