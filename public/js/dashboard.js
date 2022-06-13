@@ -89,8 +89,6 @@ async function generateSideBar(result) {
 
 generateSideBar();
 
-
-
 // Submit Link
 submitLinkBtn.addEventListener("click", async e => { 
 	e.preventDefault();
@@ -138,15 +136,16 @@ function makeLinkDetailCard(data) {
 			<p class="link-detail__date mb-5">${new Date(data.DATE_UPDATE).toDateString()} by ${data.username}</p>
 
 			<div class="flex justify-between items-center px-5 border-2 link-detail__link-wrapper h-14 rounded-lg">
-				<div class="gap-5 flex items-center h-full">
+				<div class="gap-5 flex items-center h-full short-link-detail">
 					<i class="text-slate-300 text-xl fa-solid fa-link"></i>
 					<a href="http://${data.Domain}/${data.Backhalf}" class="text-xl">${data.Domain}/${data.Backhalf}</a>
 				</div>
                     
 				<div class="flex gap-5 link-wrapper__right">
-					<div class="flex copy-btn gap-2">
+					<div class="flex copy-btn gap-2 cursor-pointer">
 						<i class="text-slate-300 h-full text-xl fa-regular fa-copy"></i>
 						<p>Copy</p>
+						<span class="copy-alert absolute px-4 py-2 bg-slate-500 -mt-14 -ml-6 text-white hidden opacity-50">Link Copied</span>
 					</div>
 					<div class="flex qr-btn gap-2">
 						<i class="text-slate-300 h-full text-xl fa-solid fa-qrcode"></i>
@@ -182,9 +181,7 @@ async function generateLinkDetail() {
 					link.classList.remove("bg-white");
 				});
 				
-
 				let linkDetail = await fetchLinkData(`/users/links/${link.dataset.linkid}`);
-			
 
 				if(!linkDetail.error) {
 					linkDetail = linkDetail.linkDetail;
@@ -210,7 +207,15 @@ async function generateLinkDetail() {
 	} catch(e) {
 		console.log(e);
 	}
+
+	const copyLinkBtn = document.querySelector(".copy-btn");
+	copyLinkBtn.addEventListener("click", () => {
+		copyLinkValue = document.querySelector(".short-link-detail a").href;
+		navigator.clipboard.writeText(copyLinkValue);
+		const copyAlert = document.querySelector(".copy-alert");
+		copyAlert.classList.toggle("hidden");
+		setTimeout(() => {
+			copyAlert.classList.toggle("hidden");
+		}, 1000);
+	}); 
 }
-
- 
-

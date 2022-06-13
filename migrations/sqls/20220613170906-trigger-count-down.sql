@@ -1,0 +1,1 @@
+DROP TRIGGER link_count IF EXISTS;
