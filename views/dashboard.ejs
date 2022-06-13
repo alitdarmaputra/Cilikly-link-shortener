@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<%-include("layouts/header");-%>
+<body class="overflow-hidden">
+    <!-- Modal -->
+    <!-- Auth modal -->
+    <div class="hidden right-14 rounded-md shadow-xl absolute px-4 py-3 flex-col z-10 bg-white transition-all duration-1000 ease-out account-modal-container">
+        <a class="px-3 py-3 hover:bg-slate-200 rounded" href="">Account Settings</a>
+        <hr class="mt-2 mb-2">
+        <a class="w-full px-3 py-3 hover:bg-slate-200 rounded" href="">Log Out</a>
+    </div>
+
+    <!-- Create link modal -->
+    <div class="z-50 w-72 transition-all ease-out absolute duration-1000 -mr-72 right-0 h-screen bottom-0 top-0 bg-white shadow-2xl create-link-modal-container">
+        <form>
+            <div class="flex px-5 py-4 h-screen flex-col justify-between create-link-modal-wrapper">
+                <div class="flex flex-col justify-around create-link__form-container">
+                    <div class="flex justify-between items-center create-link-header">
+                        <h1 class="font-bold text-xl">Create Link</h1>
+                        <div class="hover:cursor-pointer mr-4 mt-2 create-link-modal-close"><i class="text-2xl fa-solid fa-xmark"></i></div>
+                    </div>
+
+                    <div class="create-link__input-container">
+                        <input class="border-2 w-full h-18 p-2 rounded-sm mt-8 mb-5" type="text" value="cilikly.herokuapp.com" readonly>
+						<label for="link-title-form font-bold">Enter Link Title</label>
+						<input class="border-2 w-full h-18 p-2 rounded-sm mt-5 mb-5" id="link-title-form"></input>
+
+						<label for="back-half font-bold">Enter Back Half</label>
+						<input class="border-2 w-full h-18 p-2 rounded-sm mt-5 mb-5" id="back-half"></input>
+                        <div class="min-h-32 h-auto long-url-input border-2 rounded-md p-2">
+                            <h3 class="bold font-bold">Enter Long URL</h3>
+                            <textarea class="overflow-visible mt-3 w-full focus:outline-none resize-none long-url-form" name="" id="" cols="30" rows="3"></textarea>
+                        </div>
+                    </div>    
+                </div>
+    
+                <div class="submit-link-button py-2 w-full rounded-md text-center bg-sky-400 font-semibold text-white hover:bg-sky-600 hover:cursor-pointer">CREATE</div>
+            </div>
+        </form>
+    </div>
+    
+    <!-- Overlay -->
+    <div class="hidden opacity-0 absolute bg-black z-10 h-screen w-screen transition-opacity duration-1000 overlay"></div>
+    <main class="flex flex-col h-screen overflow-hidden border-2">
+
+        <%-include("layouts/dashboard_navbar");-%>
+        <div class="pl-11 pt-10 header-container">
+            <h1 class="font-bold text-3xl">Links</h1>
+        </div>
+
+        <div class="overflow-y-auto flex-1 mt-16 grid grid-cols-3 gap-2 links-container border-t-2">
+            <div class="overflow-y-auto link-list bg-slate-100">
+				<!-- link list will render here -->
+
+			</div>
+            
+            <div class="overflow-y-auto link-detail col-span-2 pt-9 px-12">
+				<!--- link detail will be render here -->
+			</div>
+    </main>
+    <script src="/js/dashboard.js"></script>
+</body>
+</html>
