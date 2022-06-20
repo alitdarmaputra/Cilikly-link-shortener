@@ -128,8 +128,8 @@ function makeLinkDetailCard(data) {
 	return `
 			<div class="flex w-full header-container justify-between items-center">
 				<h2 class="text-slate-800 font-bold text-3xl link-detail__title mb-5">${data.Title}</h2>
-				<div class="px-4 py-2 bg-slate-200 rounded-lg edit-button" data-LinkId="${data.LinkId}">
-					<i class=" fa-regular fa-pen-to-square"></i>
+				<div class="edit-link-button cursor-pointer px-4 py-2 bg-slate-200 rounded-lg edit-button" data-LinkId="${data.LinkId}">
+					<i class="fa-regular fa-pen-to-square edit-link-button"></i>
                         Edit
 				</div>
 			</div>
@@ -220,3 +220,21 @@ document.addEventListener("click", e => {
 		}, 500);
 	}
 });
+
+const editLinkModal = document.querySelector(".edit-link-modal-container");
+
+function showEditLinkModal() {
+    editLinkModal.classList.toggle("-mr-72");
+}
+
+document.addEventListener("click", e => {
+	if(e.target && e.target.classList.contains("edit-link-button")) {	
+		showEditLinkModal();
+	}
+})
+
+document.addEventListener("click", e => {
+	if(e.target && e.target.classList.contains("edit-link-modal-close") || e.target.parentElement.classList.contains("edit-link-modal-close")) {
+		showEditLinkModal();
+	}
+})
