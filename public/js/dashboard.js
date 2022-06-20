@@ -207,15 +207,16 @@ async function generateLinkDetail() {
 	} catch(e) {
 		console.log(e);
 	}
+}
 
-	const copyLinkBtn = document.querySelector(".copy-btn");
-	copyLinkBtn.addEventListener("click", () => {
+document.addEventListener("click", e => {
+	if(e.target && e.target.classList.contains("copy-btn") || e.target.parentElement.classList.contains("copy-btn")) {
 		copyLinkValue = document.querySelector(".short-link-detail a").href;
 		navigator.clipboard.writeText(copyLinkValue);
 		const copyAlert = document.querySelector(".copy-alert");
 		copyAlert.classList.toggle("hidden");
 		setTimeout(() => {
 			copyAlert.classList.toggle("hidden");
-		}, 1000);
-	}); 
-}
+		}, 500);
+	}
+});
