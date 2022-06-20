@@ -6,7 +6,7 @@ module.exports = async (req, res) => {
     if(link.length != 0) {
         link = link[0];
         console.log(`(${link.LinkId}, "${req.ip}`);
-        await connection.query(`INSERT INTO History (LinkId, IP) VALUES (${link.LinkId}, "${req.ip}")`);
+        await connection.query(`INSERT INTO History (LinkId, IP) VALUES (${link.LinkId}, "${req.ip}"`);
         res.redirect(link.Long_url);
     } else {
         res.render("notfound");
