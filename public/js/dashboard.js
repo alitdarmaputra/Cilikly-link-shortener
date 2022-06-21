@@ -115,7 +115,6 @@ submitLinkBtn.addEventListener("click", async e => {
 			},
 			body: formBody
         }).then(response => response.json());
-		console.log(result);
 		generateSideBar(result);  
     }
 	showOverlay();
@@ -223,13 +222,18 @@ document.addEventListener("click", e => {
 
 const editLinkModal = document.querySelector(".edit-link-modal-container");
 
-function showEditLinkModal() {
+function showEditLinkModal(data) {
+	document.querySelector("#editLink-title-form").value = data.Title;
+	document.querySelector("#editBack-half").value = data.Backhalf;
+	document.querySelector("#editLink-longurl").value = data.Long_url;
+	document.querySelector(".submit-edit-link-button").dataset.linkid = data.LinkId;
     editLinkModal.classList.toggle("-mr-72");
 }
 
-document.addEventListener("click", e => {
+document.addEventListener("click", async e => {
 	if(e.target && e.target.classList.contains("edit-link-button")) {	
-		showEditLinkModal();
+		const data = await fetchLinkData(`/users/edit/${e.target.dataset.linkid}`);
+		showEditLinkModal(data);
 	}
 })
 
@@ -237,4 +241,39 @@ document.addEventListener("click", e => {
 	if(e.target && e.target.classList.contains("edit-link-modal-close") || e.target.parentElement.classList.contains("edit-link-modal-close")) {
 		showEditLinkModal();
 	}
-})
+});
+
+const submitEditLinkBtn = document.querySelector(".submit-edit-link-button");
+
+submitEditLinkBtn.addEventListener("click", async e => { 
+	e.preventDefault();
+	const form = {
+		linkId: parseInt(submitEditLinkBtn.dataset.linkid),
+		title: document.getElementById("editLink-title-form").value,
+		domain: "cilikly.herokuapp.com",
+		backHalf: document.getElementById("editBack-half").value,
+		longUrl: document.getElementById("editLink-longurl").value
+	}
+
+	var formBody = [];
+	for (var property in form) {
+		var encodedKey = encodeURIComponent(property);
+		var encodedValue = encodeURIComponent(form[property]);
+		formBody.push(encodedKey + "=" + encodedValue);
+	}
+	formBody = formBody.join("&");
+
+    if(form.longUrl && form.backHalf && form.title) {
+        const result = await fetch("/users/storeEditLink", {
+			method: "POST",
+			headers: {
+				'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+			},
+			body: formBody
+        }).then(response => response.json());
+		generateSideBar(result);  
+    }
+	editLinkModal.classList.toggle("-mr-72");	
+});
+
+
