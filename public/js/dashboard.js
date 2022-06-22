@@ -75,16 +75,17 @@ async function generateSideBar(result) {
 	if(!result)
 		result = await fetchLinkData("/users/links");
 	
+	let sideBar = `<div class="flex total-link font-bold text-lg w-full pl-11"><p class="inline-block align-middle py-4">${result.data.length} Results</p></div>`	
+	
 	if(!result.error) {
-		let sideBar = `<div class="flex total-link font-bold text-lg w-full pl-11"><p class="inline-block align-middle py-4">${result.data.length} Results</p></div>`	
 		result.data.forEach(e => {
 			e.DATE_UPDATE = new Date(e.DATE_UPDATE).toDateString();
 			e.DATE_CREATE = new Date(e.DATE_CREATE).toDateString();
 			sideBar += makeSideLink(e);
-		});
-		renderContent(".link-list", sideBar);
-		generateLinkDetail();	
+		});	
 	}
+	renderContent(".link-list", sideBar);
+	generateLinkDetail();	
 }
 
 generateSideBar();
@@ -178,7 +179,7 @@ function makeLinkDetailCard(data) {
 
 async function generateLinkDetail() {
 	const linksItem = document.querySelectorAll(".link-item");
-	
+	if(!linksItem) return;	
 	linksItem.forEach(function (link) {
 		link.addEventListener("click", async function() {
 			if(link.dataset.linkid != activeLink) {
