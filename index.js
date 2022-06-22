@@ -22,6 +22,7 @@ const redirectLinkController = require("./controller/redirectLinkController.js")
 const logoutController = require("./controller/logoutController.js");
 const editLinkController = require("./controller/editLinkController.js");
 const updateLinkController = require("./controller/updateLinkController.js");
+const deleteLinkController = require("./controller/deleteLinkController.js");
 // Middleware
 const auth = require("./middleware/authMiddleware");
 
@@ -61,8 +62,9 @@ app.get("/users/links", auth, listLinkController);
 app.get("/users/links/:LinkId", auth, getLinkDetailController);
 app.get("/users/logout", logoutController);
 app.get("/users/edit/:LinkId", auth, editLinkController);
+app.put("/users/storeEditLink", updateLinkController, listLinkController);
+app.delete("/users/deleteLink/:LinkId", auth, deleteLinkController, listLinkController);
 app.get("/:backhalf", redirectLinkController);
-app.post("/users/storeEditLink", updateLinkController, listLinkController);
 app.use((req, res) => res.render("notfound"));
 
 let port = process.env.PORT;

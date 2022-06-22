@@ -99,6 +99,10 @@ submitLinkBtn.addEventListener("click", async e => {
 		longUrl: document.querySelector(".long-url-form").value
 	}
 
+	document.getElementById("link-title-form").value = "";
+	document.getElementById("back-half").value = "";
+	document.querySelector(".long-url-form").value = "";
+
 	var formBody = [];
 	for (var property in form) {
 		var encodedKey = encodeURIComponent(property);
@@ -127,9 +131,12 @@ function makeLinkDetailCard(data) {
 	return `
 			<div class="flex w-full header-container justify-between items-center">
 				<h2 class="text-slate-800 font-bold text-3xl link-detail__title mb-5">${data.Title}</h2>
-				<div class="edit-link-button cursor-pointer px-4 py-2 bg-slate-200 rounded-lg edit-button" data-LinkId="${data.LinkId}">
+				<div class="edit-link-group flex gap-2">
+					<div class="edit-link-button cursor-pointer px-4 py-2 bg-slate-200 rounded-lg edit-button hover:bg-slate-300" data-LinkId="${data.LinkId}">
 					<i class="fa-regular fa-pen-to-square edit-link-button"></i>
                         Edit
+					</div>
+					<div class="px-4 py-2 bg-red-600 text-white rounded-lg cursor-pointer hover:bg-red-800 delete-link-button" data-LinkId="${data.LinkId}">Delete</div>
 				</div>
 			</div>
 			<p class="link-detail__date mb-5">${new Date(data.DATE_UPDATE).toDateString()} by ${data.username}</p>
@@ -267,7 +274,7 @@ submitEditLinkBtn.addEventListener("click", async e => {
 
     if(form.longUrl && form.backHalf && form.title) {
         const result = await fetch("/users/storeEditLink", {
-			method: "POST",
+			method: "PUT",
 			headers: {
 				'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
 			},
@@ -278,4 +285,12 @@ submitEditLinkBtn.addEventListener("click", async e => {
 	editLinkModal.classList.toggle("-mr-72");	
 });
 
-
+document.addEventListener("click", async e => {
+	if(e.target && e.target.classList.contains("delete-link-button") || e.target.parentElement.classList.contains("delete-link-button")) {
+		const isContinue = confirm("Apakah ingin melanjutkan menghapus link ?");
+		if(isContinue) {
+			const newLinkData = await fetch(`/users/deleteLink/${e.target.dataset.linkid}`, {"method" : "DELETE"}).then(response => response.json());
+			generateSideBar(newLinkData);
+		}
+	}
+})
