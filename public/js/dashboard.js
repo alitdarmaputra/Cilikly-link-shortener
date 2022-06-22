@@ -223,10 +223,12 @@ document.addEventListener("click", e => {
 const editLinkModal = document.querySelector(".edit-link-modal-container");
 
 function showEditLinkModal(data) {
-	document.querySelector("#editLink-title-form").value = data.Title;
-	document.querySelector("#editBack-half").value = data.Backhalf;
-	document.querySelector("#editLink-longurl").value = data.Long_url;
-	document.querySelector(".submit-edit-link-button").dataset.linkid = data.LinkId;
+	if(data) {
+		document.querySelector("#editLink-title-form").value = data.Title;
+		document.querySelector("#editBack-half").value = data.Backhalf;
+		document.querySelector("#editLink-longurl").value = data.Long_url;
+		document.querySelector(".submit-edit-link-button").dataset.linkid = data.LinkId;
+	}
     editLinkModal.classList.toggle("-mr-72");
 }
 
