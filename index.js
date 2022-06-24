@@ -6,6 +6,7 @@ const mysql = require("mysql2/promise");
 const bodyParser = require("body-parser");
 const session = require("express-session");
 const MySQLStore = require('express-mysql-session')(session);
+const flash = require("connect-flash");
 const app = express();
 
 // Controllers
@@ -50,6 +51,9 @@ app.use(session({
     store: new MySQLStore({},connection)
 }));
 
+// flash
+app.use(flash());
+
 // Route
 app.get("/", homePageController);
 app.get("/auth/login", loginController);
@@ -60,9 +64,9 @@ app.get("/users/dashboard", auth, dashboardController);
 app.post("/users/createLink", auth, storeLinkController, listLinkController);
 app.get("/users/links", auth, listLinkController);
 app.get("/users/links/:LinkId", auth, getLinkDetailController);
-app.get("/users/logout", logoutController);
+app.get("/users/logout", auth, logoutController);
 app.get("/users/edit/:LinkId", auth, editLinkController);
-app.put("/users/storeEditLink", updateLinkController, listLinkController);
+app.put("/users/storeEditLink", auth, updateLinkController, listLinkController);
 app.delete("/users/deleteLink/:LinkId", auth, deleteLinkController, listLinkController);
 app.get("/:backhalf", redirectLinkController);
 app.use((req, res) => res.render("notfound"));
