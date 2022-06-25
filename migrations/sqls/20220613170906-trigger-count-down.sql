@@ -1,1 +1,1 @@
-DROP TRIGGER link_count IF EXISTS;
+DROP TRIGGER IF EXISTS link_count;
