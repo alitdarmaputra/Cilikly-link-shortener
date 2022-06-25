@@ -95,7 +95,7 @@ submitLinkBtn.addEventListener("click", async e => {
 	e.preventDefault();
 	const form = {
 		title: document.getElementById("link-title-form").value,
-		domain: "cilikly.herokuapp.com",
+		domain: document.getElementById("domain").value,
 		backHalf: document.getElementById("back-half").value,
 		longUrl: document.querySelector(".long-url-form").value
 	}
@@ -145,7 +145,7 @@ function makeLinkDetailCard(data) {
 			<div class="flex justify-between items-center px-5 border-2 link-detail__link-wrapper h-14 rounded-lg">
 				<div class="gap-5 flex items-center h-full short-link-detail">
 					<i class="text-slate-300 text-xl fa-solid fa-link"></i>
-					<a href="http://${data.Domain}/${data.Backhalf}" class="text-xl">${data.Domain}/${data.Backhalf}</a>
+					<a target="_blank" href="http://${data.Domain}/${data.Backhalf}" class="text-xl">${data.Domain}/${data.Backhalf}</a>
 				</div>
                     
 				<div class="flex gap-5 link-wrapper__right">
