@@ -178,8 +178,11 @@ function makeLinkDetailCard(data) {
 }
 
 async function generateLinkDetail() {
+	document.querySelector(".link-detail").innerHTML = "";
 	const linksItem = document.querySelectorAll(".link-item");
-	if(!linksItem) return;	
+	
+	if(linksItem.length == 0) return;
+
 	linksItem.forEach(function (link) {
 		link.addEventListener("click", async function() {
 			if(link.dataset.linkid != activeLink) {
