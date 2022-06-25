@@ -235,6 +235,7 @@ function showEditLinkModal(data) {
 		document.querySelector("#editLink-title-form").value = data.Title;
 		document.querySelector("#editBack-half").value = data.Backhalf;
 		document.querySelector("#editLink-longurl").value = data.Long_url;
+		document.querySelector("#editLink-domain").value = data.Domain;
 		document.querySelector(".submit-edit-link-button").dataset.linkid = data.LinkId;
 	}
     editLinkModal.classList.toggle("-mr-72");
@@ -260,7 +261,7 @@ submitEditLinkBtn.addEventListener("click", async e => {
 	const form = {
 		linkId: parseInt(submitEditLinkBtn.dataset.linkid),
 		title: document.getElementById("editLink-title-form").value,
-		domain: "cilikly.herokuapp.com",
+		domain: document.getElementById("editLink-domain"),
 		backHalf: document.getElementById("editBack-half").value,
 		longUrl: document.getElementById("editLink-longurl").value
 	}
