@@ -154,7 +154,7 @@ function makeLinkDetailCard(data) {
 						<p>Copy</p>
 						<span class="copy-alert absolute px-4 py-2 bg-slate-500 -mt-14 -ml-6 text-white hidden opacity-50">Link Copied</span>
 					</div>
-					<div class="flex qr-btn gap-2">
+					<div class="flex qr-btn gap-2 show-qr hover:cursor-pointer">
 						<i class="text-slate-300 h-full text-xl fa-solid fa-qrcode"></i>
 						<p>QR Code</p>
 					</div>
@@ -298,4 +298,22 @@ document.addEventListener("click", async e => {
 			generateSideBar(newLinkData);
 		}
 	}
-})
+});
+
+document.addEventListener("click", e => {
+	if(e.target && e.target.classList.contains("show-qr") || e.target.parentElement.classList.contains("show-qr")) {
+		const data = document.querySelector(".short-link-detail a").href;
+		document.querySelector(".qr-modal p").innerHTML = data;
+		const imageUrl = `http://api.qrserver.com/v1/create-qr-code/?data=${data}&size=100x100`
+		document.querySelector(".qr-modal img").src = imageUrl
+		document.querySelector(".qr-modal a").href = imageUrl;
+		document.querySelector(".qr-modal").classList.toggle("hidden");
+	}
+});
+
+document.addEventListener("click", e => {
+	console.log(e.target);
+	if(e.target && e.target.classList.contains("close-qr-icon") || e.target.parentElement.classList.contains("close-qr-icon")) {
+		document.querySelector(".qr-modal").classList.toggle("hidden");
+	}
+});
