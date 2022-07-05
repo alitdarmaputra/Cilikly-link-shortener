@@ -4,10 +4,11 @@
 A clone of bit.ly link shortener
 
 ### Tech Stack
-    - HTML, CSS, JavaScript
-    - Tailwind CSS
-    - Node.js
-    - MySQL database
+
+- HTML, CSS, JavaScript
+- Tailwind CSS
+- Node.js
+- MySQL database
 
 ### How to run?
 
