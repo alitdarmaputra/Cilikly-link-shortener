@@ -455,10 +455,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-left: 9rem;
   margin-right: 9rem;
 }
-.mx-3 {
-  margin-left: 0.75rem;
-  margin-right: 0.75rem;
-}
 .mt-2 {
   margin-top: 0.5rem;
 }
@@ -543,6 +539,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .h-full {
   height: 100%;
 }
+.h-1\/2 {
+  height: 50%;
+}
 .h-80 {
   height: 20rem;
 }
@@ -561,26 +560,14 @@ Ensure the default browser behavior of the `hidden` attribute.
 .h-14 {
   height: 3.5rem;
 }
-.h-2 {
-  height: 0.5rem;
-}
-.h-3 {
-  height: 0.75rem;
-}
-.h-1\/2 {
-  height: 50%;
-}
-.h-1\/6 {
-  height: 16.666667%;
-}
-.h-1 {
-  height: 0.25rem;
-}
 .w-full {
   width: 100%;
 }
 .w-72 {
   width: 18rem;
+}
+.w-1\/4 {
+  width: 25%;
 }
 .w-screen {
   width: 100vw;
@@ -606,14 +593,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 .w-32 {
   width: 8rem;
 }
-.w-6 {
-  width: 1.5rem;
+.w-96 {
+  width: 24rem;
 }
-.w-1\/5 {
-  width: 20%;
-}
-.w-1\/4 {
-  width: 25%;
+.w-1 {
+  width: 0.25rem;
 }
 .flex-1 {
   flex: 1 1 0%;
@@ -657,11 +641,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 .justify-around {
   justify-content: space-around;
 }
-.gap-2 {
-  gap: 0.5rem;
-}
 .gap-3 {
   gap: 0.75rem;
+}
+.gap-2 {
+  gap: 0.5rem;
 }
 .gap-5 {
   gap: 1.25rem;
@@ -707,10 +691,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .border-t-2 {
   border-top-width: 2px;
 }
-.border-black {
-  --tw-border-opacity: 1;
-  border-color: rgb(0 0 0 / var(--tw-border-opacity));
-}
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
@@ -747,10 +727,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-bg-opacity: 1;
   background-color: rgb(100 116 139 / var(--tw-bg-opacity));
 }
-.bg-red-200 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(254 202 202 / var(--tw-bg-opacity));
-}
 .p-2 {
   padding: 0.5rem;
 }
@@ -780,6 +756,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 .py-2 {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
+}
+.py-8 {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 .px-12 {
   padding-left: 3rem;
@@ -816,18 +796,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .py-1 {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
-}
-.py-5 {
-  padding-top: 1.25rem;
-  padding-bottom: 1.25rem;
-}
-.py-6 {
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
-}
-.py-8 {
-  padding-top: 2rem;
-  padding-bottom: 2rem;
 }
 .pl-11 {
   padding-left: 2.75rem;
@@ -994,9 +962,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-bg-opacity: 1;
   background-color: rgb(153 27 27 / var(--tw-bg-opacity));
 }
-.hover\:font-bold:hover {
-  font-weight: 700;
-}
 .hover\:text-slate-700:hover {
   --tw-text-opacity: 1;
   color: rgb(51 65 85 / var(--tw-text-opacity));
@@ -1004,10 +969,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .hover\:underline:hover {
   -webkit-text-decoration-line: underline;
           text-decoration-line: underline;
-}
-.hover\:decoration-solid:hover {
-  -webkit-text-decoration-style: solid;
-          text-decoration-style: solid;
 }
 .focus\:outline-none:focus {
   outline: 2px solid transparent;
